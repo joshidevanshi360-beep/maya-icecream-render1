@@ -1,8 +1,12 @@
 <?php
-require_once __DIR__ . '/includes/config.php';
-require_once __DIR__ . '/includes/functions.php';
+require_once __DIR__ . '/../includes/config.php';
+require_once __DIR__ . '/../includes/functions.php';
 
-// Destroy session and redirect
+if (!isAdminLoggedIn()) {
+    redirect('login.php');
+}
+
 session_unset();
 session_destroy();
 redirect('login.php');
+
